@@ -8,6 +8,7 @@ from PySide6.QtWidgets import (
     QHBoxLayout,
     QMessageBox,
     QLineEdit,
+    QApplication,
 )
 from PySide6.QtCore import QTimer
 from pathlib import Path
@@ -15,10 +16,11 @@ from event_handler import EventHandler
 from utils import get_desktop_path
 
 
-class CleanDesktopApp(QMainWindow):
+class CleanFoldersApp(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Clean Folders")
+        self.setWindowIcon(QApplication.windowIcon())
         self.setGeometry(100, 100, 500, 400)
 
         self.init_ui()
@@ -31,12 +33,10 @@ class CleanDesktopApp(QMainWindow):
         self.setCentralWidget(main_widget)
         layout = QVBoxLayout(main_widget)
 
-        self.folder_input = QLineEdit()
+        self.folder_input = QLineEdit(str(get_desktop_path()))
         self.folder_input.setPlaceholderText(
             "Enter folder paths separated by semicolons (;)"
         )
-        desktop_path = get_desktop_path()
-        self.folder_input.setText(str(desktop_path))
         layout.addWidget(QLabel("Folders to organize:"))
         layout.addWidget(self.folder_input)
 
