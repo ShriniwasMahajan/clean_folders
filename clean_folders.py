@@ -16,7 +16,7 @@ from event_handler import EventHandler
 from utils import get_desktop_path
 
 
-class CleanFoldersApp(QMainWindow):
+class CleanFolders(QMainWindow):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Clean Folders")

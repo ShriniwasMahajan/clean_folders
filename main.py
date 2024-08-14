@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from clean_folders_app import CleanFoldersApp
+from clean_folders import CleanFolders
 from PySide6.QtGui import QIcon
 import os
 
@@ -12,9 +12,9 @@ if __name__ == "__main__":
     else:
         application_path = os.path.dirname(os.path.abspath(__file__))
 
-    icon_path = os.path.join(application_path, "Resources", "icon.ico")
+    icon_path = os.path.join(application_path, "Resources", "icon.icns")
     app.setWindowIcon(QIcon(icon_path))
 
-    window = CleanFoldersApp()
+    window = CleanFolders()
     window.show()
     sys.exit(app.exec())
